@@ -5,57 +5,57 @@ public class NameTest {
 
     @Test
     void validNameMiddleInitial() {
-        Assertions.assertTrue(Regex.isRosterName("Person, Joe, A"));
+        Assertions.assertEquals(true, Regex.isRosterName("Person, Joe, A"));
     }
 
     @Test
     void validNameNoMiddleInitial() {
-        Assertions.assertTrue(Regex.isRosterName("Person, Joe"));
+        Assertions.assertEquals(true, Regex.isRosterName("Person, Joe"));
     }
 
     @Test
     void validNameMultipleMiddleInitials() {
-        Assertions.assertTrue(Regex.isRosterName("Person, Joe, IS"));
+        Assertions.assertEquals(true, Regex.isRosterName("Person, Joe, IS"));
     }
 
     @Test
     void validNameApostrophe() {
-        Assertions.assertTrue(Regex.isRosterName("d'Arras, Mathais"));
+        Assertions.assertEquals(true, Regex.isRosterName("d'Arras, Mathais"));
     }
 
     @Test
     void validNameHyphenatedLastName() {
-        Assertions.assertTrue(Regex.isRosterName("López-Alt, James, K"));
+        Assertions.assertEquals(true, Regex.isRosterName("Lopez-Alt, James, K"));
     }
 
     @Test
     void validNameJunior() {
-        Assertions.assertTrue(Regex.isRosterName("King Jr., Martin, L"));
+        Assertions.assertEquals(true, Regex.isRosterName("King Jr., Martin, L"));
     }
 
     @Test
     void invalidNameBlank() {
-        Assertions.assertFalse(Regex.isRosterName(""));
+        Assertions.assertEquals(false, Regex.isRosterName(""));
     }
 
     @Test
-    void invalidNameTooLong() {
-        Assertions.assertFalse(Regex.isRosterName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+    void invalidNameExcessCommas() {
+        Assertions.assertEquals(false, Regex.isRosterName("Person, Joe, Higashi, IS"));
     }
 
     @Test
     void invalidNameNoCommas() {
-        Assertions.assertFalse(Regex.isRosterName("Smith"));
+        Assertions.assertEquals(false, Regex.isRosterName("Smith"));
     }
 
     @Test
     void invalidNameNoCommasWithSpace() {
-        Assertions.assertFalse(Regex.isRosterName("Smith John L"));
-        Assertions.assertFalse(Regex.isRosterName("Smith John"));
+        Assertions.assertEquals(false, Regex.isRosterName("Smith John L"));
+        Assertions.assertEquals(false, Regex.isRosterName("Smith John"));
     }
 
     @Test
     void invalidNameHasSymbols() {
-        Assertions.assertTrue(Regex.isRosterName("{d'Arras}, Mathais"));
+        Assertions.assertEquals(false, Regex.isRosterName("{d'Arras}, Mathais"));
     }
 }

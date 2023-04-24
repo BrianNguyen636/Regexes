@@ -32,22 +32,22 @@ public class Regex {
         return l&&d;
     }
     public static boolean isRosterName(final String theInput) {
+        return regex("\\w*['\\s-]?\\w*\\.?,\\s?\\w+,?\\s?\\w*", theInput);
+    }
+    public static boolean isDate(final String theInput) {
         return regex("", theInput);
     }
-    public static boolean isDate(){
-
+    public static boolean isAddress(final String theInput) {
+        return regex("", theInput);
     }
-    public static boolean isAddress(){
-
+    public static boolean isCityStateZip(final String theInput) {
+        return regex("", theInput);
     }
-    public static boolean isCityStateZip(){
-
+    public static boolean isMilitaryTime(final String theInput) {
+        return regex("", theInput);
     }
-    public static boolean isMilitaryTime(){
-
-    }
-    public static boolean isUSCurrency(){
-
+    public static boolean isUSCurrency(final String theInput) {
+        return regex("", theInput);
     }
     public static boolean isURL(final String theInput) {
         return regex("(https?://)?^[wW]{3}?\\.?.*\\..*", theInput);
