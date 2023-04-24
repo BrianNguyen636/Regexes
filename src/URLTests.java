@@ -34,6 +34,20 @@ public class URLTests {
         Assertions.assertEquals(true, Regex.isURL("test.org"));
     }
     @Test
+    void testValidHTTPWithWWW(){
+        Assertions.assertEquals(true, Regex.isURL("http://test.org"));
+        Assertions.assertEquals(true, Regex.isURL("https://test.org"));
+        Assertions.assertEquals(true, Regex.isURL("HTTP://test.org"));
+        Assertions.assertEquals(true, Regex.isURL("HTTPS://test.org"));
+    }
+    @Test
+    void testValidHTTP() {
+        Assertions.assertEquals(true, Regex.isURL("http://www.test.org"));
+        Assertions.assertEquals(true, Regex.isURL("https://www.test.org"));
+        Assertions.assertEquals(true, Regex.isURL("HTTP://www.test.org"));
+        Assertions.assertEquals(true, Regex.isURL("HTTPS://www.test.org"));
+    }
+    @Test
     void testRejectNoPeriod(){
         Assertions.assertEquals(false, Regex.isURL("testorg"));
     }
@@ -43,6 +57,23 @@ public class URLTests {
         Assertions.assertEquals(false, Regex.isURL("testorg."));
         Assertions.assertEquals(false, Regex.isURL("test.org."));
     }
-
+    @Test
+    void testRejectBadHTTP(){
+        Assertions.assertEquals(false, Regex.isURL("HTP://test.org"));
+        Assertions.assertEquals(false, Regex.isURL("htp://test.org"));
+        Assertions.assertEquals(false, Regex.isURL("https:/test.org"));
+        Assertions.assertEquals(false, Regex.isURL("https//test.org"));
+    }
+    @Test
+    void testRejectBadWWW(){
+        Assertions.assertEquals(false, Regex.isURL("https://w.test.org"));
+        Assertions.assertEquals(false, Regex.isURL("https://ww.test.org"));
+        Assertions.assertEquals(false, Regex.isURL("w.test.org"));
+        Assertions.assertEquals(false, Regex.isURL("ww.test.org"));
+    }
+    @Test
+    void testRejectSpaces(){
+        Assertions.assertEquals(false, Regex.isURL("tes t.org"));
+    }
 
 }
