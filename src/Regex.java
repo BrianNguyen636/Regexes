@@ -32,7 +32,7 @@ public class Regex {
         return l&&d;
     }
     public static boolean isURL(final String theInput) {
-        return regex("^[wW]{3}?\\.?.*\\..*", theInput);
+        return regex("(https?://)?^[wW]{3}?\\.?.*\\..*", theInput);
     }
     public static boolean isPassword(final String theInput) {
         if (theInput.length() < 10) return false;

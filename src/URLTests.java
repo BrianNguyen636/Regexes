@@ -63,6 +63,7 @@ public class URLTests {
         Assertions.assertEquals(false, Regex.isURL("htp://test.org"));
         Assertions.assertEquals(false, Regex.isURL("https:/test.org"));
         Assertions.assertEquals(false, Regex.isURL("https//test.org"));
+        Assertions.assertEquals(false, Regex.isURL("thtps://test.org"));
     }
     @Test
     void testRejectBadWWW(){
