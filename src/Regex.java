@@ -31,6 +31,24 @@ public class Regex {
         boolean d = regex(".+\\..+", domain);
         return l&&d;
     }
+    public static boolean isRosterName(final String theInput) {
+        return regex("", theInput);
+    }
+    public static boolean isDate(){
+
+    }
+    public static boolean isAddress(){
+
+    }
+    public static boolean isCityStateZip(){
+
+    }
+    public static boolean isMilitaryTime(){
+
+    }
+    public static boolean isUSCurrency(){
+
+    }
     public static boolean isURL(final String theInput) {
         return regex("(https?://)?^[wW]{3}?\\.?.*\\..*", theInput);
     }
