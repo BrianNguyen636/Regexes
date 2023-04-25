@@ -25,7 +25,42 @@ public class Regex {
     }
 
     public static boolean isDate(final String theInput) {
-        return regex("", theInput);
+        if (!regex("\\d{2}[/-]\\d{2}[/-]\\d{4}", theInput) ||
+            (regex("00........", theInput) ||
+            regex("...00.....", theInput) ||
+            regex("......0000", theInput)
+            )
+        ) return false;
+        int month = Integer.parseInt(theInput.substring(0,2));
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12: { //Months with 31 days
+                return regex("...[0-2][0-9].\\d{4}", theInput) ||
+                        regex("...[3][0-1].\\d{4}", theInput);
+            }
+            case 4:
+            case 6:
+            case 9:
+            case 11: { //Months with 30 days
+                return regex("...[0-2][0-9].\\d{4}", theInput) ||
+                        regex("...30.\\d{4}", theInput);
+            }
+            case 2: { //Leap year calculation
+                int yearNum = Integer.parseInt(theInput.substring(6));
+                if ((regex(".......000", theInput) && yearNum % 400 == 0) ||
+                    yearNum % 4 == 0) {
+                    return regex("...[0-1][0-9].\\d{4}", theInput)||
+                            regex("...2[0-9].\\d{4}", theInput);
+                } else return regex("...[0-1][0-9].\\d{4}", theInput)||
+                        regex("...2[0-8].\\d{4}", theInput);
+            }
+            default: return false;
+        }
     }
 
     public static boolean isAddress(final String theInput) {
