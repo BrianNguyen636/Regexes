@@ -64,11 +64,15 @@ public class Regex {
     }
 
     public static boolean isAddress(final String theInput) {
-        return regex("", theInput);
+        return regex("\\d{4}\\s.+\\s[rR]([oO][aA])?[dD]\\.?", theInput) ||
+                regex("\\d{4}\\s.+\\s[bB][oO]?[uU]?[lL][eE]?[vV][aA]?[rR]?[dD]\\.?", theInput) ||
+                regex("\\d{4}\\s.+\\s[sS][tT][rR]?[eE]?[eE]?[tT]?\\.?", theInput) ||
+                regex("\\d{4}\\s.+\\s[aA][vV][eE][nN]?[uU]?[eE]?\\.?", theInput) ||
+                regex("\\d{4}\\s.+\\s[wW][aA][yY]\\.?", theInput);
     }
 
     public static boolean isCityStateZip(final String theInput) {
-        return regex("", theInput);
+        return regex(".+,\\s+[A-Z]{2}\\s\\d{5}-?\\d*", theInput);
     }
 
     public static boolean isMilitaryTime(final String theInput) {
@@ -77,7 +81,7 @@ public class Regex {
     }
 
     public static boolean isUSCurrency(final String theInput) {
-        return regex("", theInput);
+        return regex("^\\$\\d{0,3}(,?\\d{3})*\\.\\d\\d", theInput);
     }
 
     public static boolean isURL(final String theInput) {
