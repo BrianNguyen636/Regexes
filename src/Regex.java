@@ -16,20 +16,8 @@ public class Regex {
                 regex("\\d{10}", theInput);
     }
 
-    /*
-    NO periods at beginning or end of name
-    No two periods consecutive
-    Need @ char
-    INCOMPLETE
-     */
     public static boolean isEmail(final String theInput) {
-        String[] split = theInput.split("@");
-        if (split.length > 2) return false;
-        String local = split[0];
-        String domain = split[1];
-        boolean l = regex("^[^\\.].+[^\\.]$",local);
-        boolean d = regex(".+\\..+", domain);
-        return l&&d;
+        return regex(".+@.+\\..+", theInput) && !regex(".*@.*@.*", theInput);
     }
     public static boolean isRosterName(final String theInput) {
         return regex("\\w*['\\s-]?\\w*\\.?,\\s?\\w+,?\\s?\\w*", theInput);
@@ -44,13 +32,16 @@ public class Regex {
         return regex("", theInput);
     }
     public static boolean isMilitaryTime(final String theInput) {
-        return regex("", theInput);
+        return regex("[0-1][0-9][0-5][0-9]", theInput) ||
+                regex("2[0-3][0-5][0-9]", theInput);
     }
     public static boolean isUSCurrency(final String theInput) {
         return regex("", theInput);
     }
     public static boolean isURL(final String theInput) {
-        return regex("(https?://)?^[wW]{3}?\\.?.*\\..*", theInput);
+        if (regex(".*\\s.*",theInput)) return false;
+        return regex("[^\\.](([hH][tT][tT][pP][sS]?://)|([wW][wW][wW]))\\..*\\..*[^\\.]$", theInput) ||
+                regex("[^\\.]([hH][tT][tT][pP][sS]?://[wW][wW][wW]\\.)?.*\\..*[^\\.]$", theInput);
     }
     public static boolean isPassword(final String theInput) {
         if (theInput.length() < 10) return false;
@@ -61,6 +52,7 @@ public class Regex {
                 regex(".*[!?,\\.].*", theInput) &&
                 !regex(".*[a-z]{4}.*", theInput);
     }
+
     public static boolean isOddion(final String theInput) {
         if (theInput.length() % 2 == 0) return false;
         return regex("[A-z-]*[iI][oO][nN]", theInput);

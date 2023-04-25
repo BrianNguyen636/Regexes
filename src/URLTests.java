@@ -34,7 +34,7 @@ public class URLTests {
         Assertions.assertEquals(true, Regex.isURL("test.org"));
     }
     @Test
-    void testValidHTTPWithWWW(){
+    void testValidHTTPWithoutWWW(){
         Assertions.assertEquals(true, Regex.isURL("http://test.org"));
         Assertions.assertEquals(true, Regex.isURL("https://test.org"));
         Assertions.assertEquals(true, Regex.isURL("HTTP://test.org"));
@@ -74,7 +74,7 @@ public class URLTests {
     }
     @Test
     void testRejectSpaces(){
-        Assertions.assertEquals(false, Regex.isURL("tes t.org"));
+        Assertions.assertEquals(false, Regex.isURL("www.tes t.org"));
     }
 
 }
