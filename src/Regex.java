@@ -19,30 +19,38 @@ public class Regex {
     public static boolean isEmail(final String theInput) {
         return regex(".+@.+\\..+", theInput) && !regex(".*@.*@.*", theInput);
     }
+
     public static boolean isRosterName(final String theInput) {
         return regex("\\w*['\\s-]?\\w*\\.?,\\s?\\w+,?\\s?\\w*", theInput);
     }
+
     public static boolean isDate(final String theInput) {
         return regex("", theInput);
     }
+
     public static boolean isAddress(final String theInput) {
         return regex("", theInput);
     }
+
     public static boolean isCityStateZip(final String theInput) {
         return regex("", theInput);
     }
+
     public static boolean isMilitaryTime(final String theInput) {
         return regex("[0-1][0-9][0-5][0-9]", theInput) ||
                 regex("2[0-3][0-5][0-9]", theInput);
     }
+
     public static boolean isUSCurrency(final String theInput) {
         return regex("", theInput);
     }
+
     public static boolean isURL(final String theInput) {
         if (regex(".*\\s.*",theInput)) return false;
         return regex("[^\\.](([hH][tT][tT][pP][sS]?://)|([wW][wW][wW]))\\..*\\..*[^\\.]$", theInput) ||
                 regex("[^\\.]([hH][tT][tT][pP][sS]?://[wW][wW][wW]\\.)?.*\\..*[^\\.]$", theInput);
     }
+
     public static boolean isPassword(final String theInput) {
         if (theInput.length() < 10) return false;
         return
