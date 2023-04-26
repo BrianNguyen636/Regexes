@@ -61,7 +61,11 @@ public class Regex {
     }
 
     public static boolean isCityStateZip(final String theInput) {
-        return regex(".+,\\s+[A-Z]{2}\\s\\d{5}-?\\d*", theInput);
+        return regex(".+,\\s+" +
+                "((A[LKZRS])|(C[AOT])|(D[EC])|(FL)|(G[AU])|(HI)|(I[DLNA])|(KY)|(LA)|" +
+                "(M[EDAINSOT])|(N[EVHJMYCD])|(MP)|(O[HKR])|(P[AR])|(RI)|(S[CD])|(T[NXT])|" +
+                "(UT)|(V[TAI])|(W[AVIY]))" +
+                "\\s\\d{5}-?\\d*", theInput);
     }
 
     public static boolean isMilitaryTime(final String theInput) {

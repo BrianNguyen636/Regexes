@@ -81,4 +81,8 @@ public class CityStateZipTest {
     void invalidCityStateZipBadZip() {
         Assertions.assertEquals(false, Regex.isCityStateZip("Tacoma, WA 98"));
     }
+    @Test
+    void invalidCityStateZipNotRealState() {
+        Assertions.assertEquals(false, Regex.isCityStateZip("Tacoma, DQ 98042"));
+    }
 }
