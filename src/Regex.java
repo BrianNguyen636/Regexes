@@ -24,7 +24,9 @@ public class Regex {
     public static boolean isRosterName(final String theInput) {
         return regex("\\w*['\\s-]?\\w*\\.?,\\s?\\w+,?\\s?\\w*", theInput);
     }
-
+    /*
+        Rather inelegant, but I couldn't think of other solutions without all the booleans.
+     */
     public static boolean isDate(final String theInput) {
         if (!regex("\\d{2}[/-]\\d{2}[/-]\\d{4}", theInput) ||
             (regex("00........", theInput) ||
@@ -49,7 +51,9 @@ public class Regex {
                 regex("(02).2[0-8].\\d{4}", theInput);
         return thirtyOne || thirty || feb;
     }
-
+    /*
+        Ugly, but it lets me handle spotted caps like this eXamPlE
+     */
     public static boolean isAddress(final String theInput) {
         return regex("\\d{4}\\s.+\\s[rR]([oO][aA])?[dD]\\.?", theInput) ||
                 regex("\\d{4}\\s.+\\s[bB][oO]?[uU]?[lL][eE]?[vV][aA]?[rR]?[dD]\\.?", theInput) ||
@@ -74,7 +78,9 @@ public class Regex {
     public static boolean isUSCurrency(final String theInput) {
         return regex("^\\$\\d{0,3}(,?\\d{3})*\\.\\d\\d", theInput);
     }
-
+    /*
+        I wanted to catch badly spelt www or https:// but couldn't find a solution
+    */
     public static boolean isURL(final String theInput) {
         if (regex(".*\\s.*",theInput) || !regex("[^\\.].*[^\\.]$", theInput) ||
             regex(".*\\.{2}.+\\..+", theInput)) return false;
