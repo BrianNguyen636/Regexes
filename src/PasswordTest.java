@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class PasswordTests {
+public class PasswordTest {
     @Test
     void testValidLength(){
         Assertions.assertEquals(true, Regex.isPassword("aB!4567890"));

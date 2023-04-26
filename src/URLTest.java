@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class URLTests {
+public class URLTest {
     @Test
     void testValidWWW(){
         Assertions.assertEquals(true, Regex.isURL("www.test.org"));

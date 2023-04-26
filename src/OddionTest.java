@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class OddionTests {
+public class OddionTest {
     @Test
     void testValidOddLength(){
         Assertions.assertEquals(true, Regex.isOddion("fission"));

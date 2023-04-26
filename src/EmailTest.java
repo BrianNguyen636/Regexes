@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class EmailTests {
+class EmailTest {
 
     @Test
     void validEmail() {

@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
  * @author Brian Nguyen
  */
 public class Regex {
-    public static void main(String[] args) {}
-
     public static boolean isSSN(final String theInput) {
         return regex( "\\d{3}-\\d{2}-\\d{4}", theInput) ||
                 regex("\\d{9}", theInput) ||

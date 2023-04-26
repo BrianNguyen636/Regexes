@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class PhoneNumTests {
+public class PhoneNumTest {
     @Test
     void testValidLength() {
         Assertions.assertEquals(true, Regex.isPhoneNumber("1234567890"));
