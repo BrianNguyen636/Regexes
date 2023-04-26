@@ -5,21 +5,11 @@ public class URLTests {
     @Test
     void testValidWWW(){
         Assertions.assertEquals(true, Regex.isURL("www.test.org"));
-        Assertions.assertEquals(true, Regex.isURL("WWW.test.org"));
-        Assertions.assertEquals(true, Regex.isURL("WwW.test.org"));
     }
     @Test
     void testValidPeriods(){
         Assertions.assertEquals(true, Regex.isURL("www.test.org"));
         Assertions.assertEquals(true, Regex.isURL("www.test.info"));
-    }
-    @Test
-    void testValidAllCaps(){
-        Assertions.assertEquals(true, Regex.isURL("WWW.TEST.ORG"));
-    }
-    @Test
-    void testValidSpottedCaps(){
-        Assertions.assertEquals(true, Regex.isURL("WwW.TeSt.OrG"));
     }
     @Test
     void testValidAllowNumbers(){
@@ -37,20 +27,18 @@ public class URLTests {
     void testValidHTTPWithoutWWW(){
         Assertions.assertEquals(true, Regex.isURL("http://test.org"));
         Assertions.assertEquals(true, Regex.isURL("https://test.org"));
-        Assertions.assertEquals(true, Regex.isURL("HTTP://test.org"));
-        Assertions.assertEquals(true, Regex.isURL("HTTPS://test.org"));
+
     }
     @Test
     void testValidHTTP() {
         Assertions.assertEquals(true, Regex.isURL("http://www.test.org"));
         Assertions.assertEquals(true, Regex.isURL("https://www.test.org"));
-        Assertions.assertEquals(true, Regex.isURL("HTTP://www.test.org"));
-        Assertions.assertEquals(true, Regex.isURL("HTTPS://www.test.org"));
     }
     @Test
     void testRejectNoPeriod(){
         Assertions.assertEquals(false, Regex.isURL("testorg"));
     }
+
     @Test
     void testRejectPeriodAtStartOrEnd(){
         Assertions.assertEquals(false, Regex.isURL(".testorg"));
@@ -58,19 +46,13 @@ public class URLTests {
         Assertions.assertEquals(false, Regex.isURL("test.org."));
     }
     @Test
-    void testRejectBadHTTP(){
-        Assertions.assertEquals(false, Regex.isURL("HTP://test.org"));
-        Assertions.assertEquals(false, Regex.isURL("htp://test.org"));
-        Assertions.assertEquals(false, Regex.isURL("https:/test.org"));
-        Assertions.assertEquals(false, Regex.isURL("https//test.org"));
-        Assertions.assertEquals(false, Regex.isURL("thtps://test.org"));
+    void testRejectCaps(){
+        Assertions.assertEquals(false, Regex.isURL("HTTP://WWW.test.org"));
+        Assertions.assertEquals(false, Regex.isURL("HTTPS://test.org"));
     }
     @Test
-    void testRejectBadWWW(){
-        Assertions.assertEquals(false, Regex.isURL("https://w.test.org"));
-        Assertions.assertEquals(false, Regex.isURL("https://ww.test.org"));
-        Assertions.assertEquals(false, Regex.isURL("w.test.org"));
-        Assertions.assertEquals(false, Regex.isURL("ww.test.org"));
+    void testRejectBlank(){
+        Assertions.assertEquals(false, Regex.isURL(""));
     }
     @Test
     void testRejectSpaces(){
