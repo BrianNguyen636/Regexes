@@ -76,8 +76,9 @@ public class Regex {
     }
 
     public static boolean isURL(final String theInput) {
-        if (regex(".*\\s.*",theInput) || !regex("[^\\.].*[^\\.]$", theInput)) return false;
-        return regex("(https?://)?[^A-Z]*\\.[^A-Z]*", theInput);
+        if (regex(".*\\s.*",theInput) || !regex("[^\\.].*[^\\.]$", theInput) ||
+            regex(".*\\.{2}.+\\..+", theInput)) return false;
+        return regex("([hH][tT][tT][pP][sS]?://)?.+\\..+", theInput);
     }
 
     public static boolean isPassword(final String theInput) {

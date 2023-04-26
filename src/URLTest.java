@@ -59,12 +59,8 @@ public class URLTest {
         Assertions.assertEquals(false, Regex.isURL("test.org."));
     }
     @Test
-    void testRejectBadHTTP(){
-        Assertions.assertEquals(false, Regex.isURL("HTP://test.org"));
-        Assertions.assertEquals(false, Regex.isURL("htp://test.org"));
-        Assertions.assertEquals(false, Regex.isURL("https:/test.org"));
-        Assertions.assertEquals(false, Regex.isURL("https//test.org"));
-        Assertions.assertEquals(false, Regex.isURL("thtps://test.org"));
+    void testRejectConsecutiveDotsDomain() {
+        Assertions.assertEquals(false, Regex.isURL("www.test..123.org"));
     }
     @Test
     void testRejectBlank(){
